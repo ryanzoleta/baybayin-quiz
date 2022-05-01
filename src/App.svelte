@@ -15,6 +15,11 @@
     body {
       background-color: #a2d2ff;
     }
+
+    @font-face {
+      font-family: arial-rounded;
+      src: url(fonts/arial-rounded.ttf);
+    }
   </style>
 </svelte:head>
 
