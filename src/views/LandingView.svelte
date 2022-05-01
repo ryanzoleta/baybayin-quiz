@@ -7,7 +7,7 @@
 <main>
     <h1>Baybabyin 101</h1>
     <p>Learn the native alphabet of the Philippines</p>
-    <LinkButton text="Mag-simula" {handleClickStart} />
+    <LinkButton text="Mag-simula" handleClick={handleClickStart} />
 </main>
 
 <style>

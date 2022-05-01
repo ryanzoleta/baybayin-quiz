@@ -1,6 +1,11 @@
 <script>
     export let text = 'Start';
-    export let handleClick;
+    export let isCorrect;
+    export let handleClickChoice;
+
+    function handleClick() {
+        handleClickChoice(isCorrect);
+    }
 </script>
 
 <button type="button" class="btn" on:click={handleClick}>{text}</button>
