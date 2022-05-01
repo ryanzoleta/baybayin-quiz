@@ -1,37 +1,37 @@
 <script>
-    import LandingView from './views/LandingView.svelte';
-    import QuizView from './views/QuizView.svelte';
-    import { questions } from './stores/questions';
+  import LandingView from './views/LandingView.svelte';
+  import QuizView from './views/QuizView.svelte';
+  import { questions } from './stores/questions';
 
-    const LANDING = 'LANDING';
-    const QUIZ = 'QUIZ';
-    const RESULTS = 'RESULTS';
+  const LANDING = 'LANDING';
+  const QUIZ = 'QUIZ';
+  const RESULTS = 'RESULTS';
 
-    let view = QUIZ;
-    let score;
-    let totalItems;
+  let view = QUIZ;
+  let score;
+  let totalItems;
 
-    function handleClickStart() {
-        view = QUIZ;
-    }
+  function handleClickStart() {
+    view = QUIZ;
+  }
 
-    function handleEndQuiz(score, totalItems) {
-        view = RESULTS;
-        score = score;
-        totalItems = totalItems;
-    }
+  function handleEndQuiz(score, totalItems) {
+    view = RESULTS;
+    score = score;
+    totalItems = totalItems;
+  }
 
-    console.log($questions);
+  console.log($questions);
 </script>
 
 {#if view === LANDING}
-    <LandingView {handleClickStart} />
+  <LandingView {handleClickStart} />
 {:else if view === QUIZ}
-    <QuizView {handleEndQuiz} bind:score bind:totalItems />
+  <QuizView {handleEndQuiz} bind:score bind:totalItems />
 {:else if view === RESULTS}
-    <h1>RESULTS</h1>
-    <p>{score}</p>
-    <p>{totalItems}</p>
+  <h1>RESULTS</h1>
+  <p>{score}</p>
+  <p>{totalItems}</p>
 {/if}
 
 <style>
