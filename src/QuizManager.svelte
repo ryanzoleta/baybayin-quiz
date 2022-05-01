@@ -7,7 +7,7 @@
   const QUIZ = 'QUIZ';
   const RESULTS = 'RESULTS';
 
-  let view = QUIZ;
+  let view = LANDING;
   let score;
   let totalItems;
 
