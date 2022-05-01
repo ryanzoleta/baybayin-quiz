@@ -8,8 +8,7 @@ export function pulse(event) {
   });
 }
 
-export function shake(event) {
-  const element = event.target;
+export function shake(element) {
   element.classList.add('animate__animated', 'animate__shakeX');
 
   element.addEventListener('animationend', () => {
@@ -34,5 +33,14 @@ export function slideOutLeft(element) {
     element.classList.remove('animate__animated');
     element.classList.remove('animate__slideOutLeft');
     slideInRight(element);
+  });
+}
+
+export function bounce(element) {
+  element.classList.add('animate__animated', 'animate__bounce');
+
+  element.addEventListener('animationend', () => {
+    element.classList.remove('animate__animated');
+    element.classList.remove('animate__bounce');
   });
 }

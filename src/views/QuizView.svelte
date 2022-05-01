@@ -1,6 +1,6 @@
 <script>
   import { questions } from '../stores/questions';
-  import { slideOutLeft } from '../common/animate';
+  import { slideOutLeft, shake, bounce } from '../common/animate';
   import ChoiceButton from '../components/ChoiceButton.svelte';
 
   // Retrieve 10 random letters from the questions store
@@ -37,6 +37,14 @@
     slideOutLeft(document.getElementById('entireView'));
     setTimeout(() => nextQuestion(), 500);
   }
+
+  function broadcastResult(isCorrect) {
+    if (isCorrect) {
+      bounce(document.getElementById('question'));
+    } else {
+      shake(document.getElementById('question'));
+    }
+  }
 </script>
 
 <main>
@@ -46,7 +54,7 @@
   >
     <div class="row ">
       <div class="col title-box">
-        <div class="question">
+        <div id="question">
           <h1 class="vertical-middle">{remainingQuestion[0]}</h1>
         </div>
         {#each choices as choice}
@@ -55,6 +63,7 @@
               text={choice}
               isCorrect={choice === remainingQuestion[0] ? true : false}
               {handleClickChoice}
+              {broadcastResult}
             />
             <br />
           </div>
@@ -69,7 +78,7 @@
     height: 100vh;
   }
 
-  .question {
+  #question {
     background: #ffffff;
     border: 29px solid #ffafcc;
     box-sizing: border-box;
@@ -80,11 +89,15 @@
     height: 400px;
   }
 
-  .question h1 {
+  #question h1 {
     font-size: 56px;
     width: 100%;
     height: 100%;
     text-align: center;
+  }
+
+  #question {
+    --animate-duration: 1s;
   }
 
   #entireView {

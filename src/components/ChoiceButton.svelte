@@ -6,15 +6,17 @@
   export let showCorrect = false;
   export let showWrong = false;
   export let handleClickChoice;
+  export let broadcastResult;
 
   function handleClick() {
+    broadcastResult(isCorrect);
     showCorrect = isCorrect ? true : false;
     showWrong = isCorrect ? false : true;
     setTimeout(() => {
       handleClickChoice(isCorrect);
       showCorrect = false;
       showWrong = false;
-    }, 1000);
+    }, 1500);
   }
 </script>
 
