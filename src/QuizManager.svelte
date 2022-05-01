@@ -20,8 +20,6 @@
     score = score;
     totalItems = totalItems;
   }
-
-  console.log($questions);
 </script>
 
 {#if view === LANDING}
