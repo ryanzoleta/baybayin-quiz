@@ -1,6 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { writable } from 'svelte/store';
 
-export const questions = writable([{ reading: 'a', character: 'ᜀ' },
+export default writable([{ reading: 'a', character: 'ᜀ' },
   { reading: 'i/e', character: 'ᜁ' },
   { reading: 'u/o', character: 'ᜂ' },
   { reading: 'ba/va', character: 'ᜊ' },

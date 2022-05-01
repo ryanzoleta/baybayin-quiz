@@ -10,7 +10,9 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "rules": {},
+    "rules": {
+        "linebreak-style": 0
+    },
     "plugins": [
         "svelte3"
     ]
