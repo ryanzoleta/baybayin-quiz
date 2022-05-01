@@ -18,10 +18,10 @@
     view = QUIZ;
   }
 
-  function handleEndQuiz(score, totalItems) {
+  function handleEndQuiz() {
     view = RESULTS;
-    score = score;
-    totalItems = totalItems;
+    // score = score;
+    // totalItems = totalItems;
   }
 
   function restartQuiz() {

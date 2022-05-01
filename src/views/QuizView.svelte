@@ -29,10 +29,11 @@
       .style.width.replace('%', '');
     document.getElementById('progressBar').style.width =
       parseInt(currentProgress) + 10 + '%';
-    console.log(document.getElementById('progressBar').style.width);
 
     if (remainingQuestion.length <= 0) {
       handleEndQuiz();
+      remainingQuestion = [{ reading: '', character: '' }];
+      choices = [];
     }
   }
 
@@ -61,13 +62,15 @@
       <div class="col title-box">
         <div id="questionBox">
           <div id="question">
-            <h1 class="vertical-middle">{remainingQuestion[0]}</h1>
+            <h1 class="vertical-middle">{remainingQuestion[0].character}</h1>
           </div>
           {#each choices as choice}
             <div>
               <ChoiceButton
-                text={choice}
-                isCorrect={choice === remainingQuestion[0] ? true : false}
+                text={choice.reading}
+                isCorrect={choice.reading === remainingQuestion[0].reading
+                  ? true
+                  : false}
                 {handleClickChoice}
                 {broadcastResult}
               />
@@ -112,13 +115,18 @@
 
     width: 400px;
     height: 400px;
+    display: table;
+    text-align: center;
   }
 
   #question h1 {
-    font-size: 56px;
+    font-size: 120px;
     width: 100%;
     height: 100%;
-    text-align: center;
+    /* text-align: center; */
+    display: table-cell;
+    vertical-align: middle;
+    color: #474747;
   }
 
   #question {
@@ -139,6 +147,6 @@
   }
 
   .progress-bar {
-    background-color: #cfbaf0;
+    background-color: #fec89a;
   }
 </style>
