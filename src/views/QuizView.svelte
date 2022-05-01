@@ -6,7 +6,7 @@
   // Retrieve 10 random letters from the questions store
   let remainingQuestion = $questions
     .sort(() => 0.5 - Math.random())
-    .slice(0, 2);
+    .slice(0, 10);
 
   // Get 3 random items from the questions store, add the correct one, and shuffle
   let choices = $questions.sort(() => 0.5 - Math.random()).slice(0, 3);
