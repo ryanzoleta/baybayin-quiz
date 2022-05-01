@@ -13,6 +13,8 @@
   let totalItems;
 
   function handleClickStart() {
+    score = 0;
+    totalItems = 0;
     view = QUIZ;
   }
 
@@ -23,6 +25,8 @@
   }
 
   function restartQuiz() {
+    score = 0;
+    totalItems = 0;
     view = QUIZ;
   }
 
@@ -36,7 +40,7 @@
 {:else if view === QUIZ}
   <QuizView {handleEndQuiz} bind:score bind:totalItems />
 {:else if view === RESULTS}
-  <ResultsView {score} {totalItems} {restartQuiz} {gotoHome} />
+  <ResultsView bind:score bind:totalItems {restartQuiz} {gotoHome} />
 {/if}
 
 <style>
