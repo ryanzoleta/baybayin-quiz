@@ -38,7 +38,7 @@
 
   p {
     margin-bottom: 50px;
-    font-size: 28px;
+    font-size: 24px;
     color: #979797;
     padding-left: 50px;
     padding-right: 50px;
