@@ -8,7 +8,12 @@
   export let handleClickChoice;
   export let broadcastResult;
 
-  function handleClick() {
+  function handleClick(event) {
+    if (event.target.disabled) {
+      return;
+    }
+
+    event.target.disabled = true;
     broadcastResult(isCorrect);
     showCorrect = isCorrect ? true : false;
     showWrong = isCorrect ? false : true;
@@ -16,6 +21,7 @@
       handleClickChoice(isCorrect);
       showCorrect = false;
       showWrong = false;
+      event.target.disabled = false;
     }, 1500);
   }
 </script>

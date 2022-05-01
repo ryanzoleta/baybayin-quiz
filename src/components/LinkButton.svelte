@@ -3,10 +3,15 @@
 
   export let text = 'Start';
   export let handleClick;
+  export let type;
 </script>
 
-<button type="button" class="btn" on:click={handleClick} on:mouseenter={pulse}
-  >{text}</button
+<button
+  type="button"
+  class="btn"
+  class:secondary={type == 'secondary'}
+  on:click={handleClick}
+  on:mouseenter={pulse}>{text}</button
 >
 
 <style>
@@ -18,5 +23,11 @@
     color: white;
     font-family: 'Arial Rounded MT Bold';
     --animate-duration: 0.5s;
+    margin-top: 20px;
+  }
+
+  .secondary {
+    background-color: #ececec;
+    color: #474747;
   }
 </style>

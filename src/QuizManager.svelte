@@ -1,6 +1,7 @@
 <script>
   import LandingView from './views/LandingView.svelte';
   import QuizView from './views/QuizView.svelte';
+  import ResultsView from './views/ResultsView.svelte';
   import { questions } from './stores/questions';
 
   const LANDING = 'LANDING';
@@ -20,6 +21,14 @@
     score = score;
     totalItems = totalItems;
   }
+
+  function restartQuiz() {
+    view = QUIZ;
+  }
+
+  function gotoHome() {
+    view = LANDING;
+  }
 </script>
 
 {#if view === LANDING}
@@ -27,11 +36,8 @@
 {:else if view === QUIZ}
   <QuizView {handleEndQuiz} bind:score bind:totalItems />
 {:else if view === RESULTS}
-  <h1>RESULTS</h1>
-  <p>{score}</p>
-  <p>{totalItems}</p>
+  <ResultsView {score} {totalItems} {restartQuiz} {gotoHome} />
 {/if}
 
 <style>
 </style>
-  

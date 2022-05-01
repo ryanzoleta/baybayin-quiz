@@ -9,7 +9,7 @@
     class="container d-flex flex-column min-vh-100 justify-content-center align-items-center"
   >
     <div class="row ">
-      <div class="col title-box">
+      <div class="col title-box animate__animated animate__slideInDown">
         <h1>Baybayin 101</h1>
         <p>Learn the native alphabet of the Philippines</p>
         <LinkButton text="start" handleClick={handleClickStart} />
@@ -24,6 +24,7 @@
     border-radius: 50px;
     padding: 70px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    --animate-duration: 0.4s;
   }
 
   .container {
