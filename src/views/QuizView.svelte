@@ -24,6 +24,13 @@
     choices = [...choices, remainingQuestion[0]];
     choices = choices.sort(() => 0.5 - Math.random());
 
+    const currentProgress = document
+      .getElementById('progressBar')
+      .style.width.replace('%', '');
+    document.getElementById('progressBar').style.width =
+      parseInt(currentProgress) + 10 + '%';
+    console.log(document.getElementById('progressBar').style.width);
+
     if (remainingQuestion.length <= 0) {
       handleEndQuiz();
     }
@@ -34,7 +41,7 @@
       score += 1;
     }
     totalItems += 1;
-    slideOutLeft(document.getElementById('entireView'));
+    slideOutLeft(document.getElementById('questionRow'));
     setTimeout(() => nextQuestion(), 500);
   }
 
@@ -48,27 +55,45 @@
 </script>
 
 <main>
-  <div
-    class="container d-flex flex-column min-vh-100 justify-content-center align-items-center animate__animated animate__slideInRight"
-    id="entireView"
-  >
-    <div class="row ">
+  <div class="container " id="entireView">
+    <div class="row animate__animated animate__slideInRight" id="questionRow">
+      <div class="col" />
       <div class="col title-box">
-        <div id="question">
-          <h1 class="vertical-middle">{remainingQuestion[0]}</h1>
-        </div>
-        {#each choices as choice}
-          <div>
-            <ChoiceButton
-              text={choice}
-              isCorrect={choice === remainingQuestion[0] ? true : false}
-              {handleClickChoice}
-              {broadcastResult}
-            />
-            <br />
+        <div id="questionBox">
+          <div id="question">
+            <h1 class="vertical-middle">{remainingQuestion[0]}</h1>
           </div>
-        {/each}
+          {#each choices as choice}
+            <div>
+              <ChoiceButton
+                text={choice}
+                isCorrect={choice === remainingQuestion[0] ? true : false}
+                {handleClickChoice}
+                {broadcastResult}
+              />
+              <br />
+            </div>
+          {/each}
+        </div>
       </div>
+      <div class="col" />
+    </div>
+    <div class="row">
+      <div class="col" />
+      <div class="col">
+        <div class="progress">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            style="width:0%"
+            id="progressBar"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          />
+        </div>
+      </div>
+      <div class="col" />
     </div>
   </div>
 </main>
@@ -102,5 +127,18 @@
 
   #entireView {
     --animate-duration: 0.5s;
+  }
+
+  #questionBox {
+    margin-top: 100px;
+    /* width: 490px; */
+  }
+
+  .progress {
+    margin-top: 50px;
+  }
+
+  .progress-bar {
+    background-color: #cfbaf0;
   }
 </style>

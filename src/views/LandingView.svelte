@@ -10,6 +10,7 @@
   >
     <div class="row ">
       <div class="col title-box animate__animated animate__slideInDown">
+        <h2>ᜊᜌ᜔ᜊᜌᜒᜈ᜔</h2>
         <h1>Baybayin 101</h1>
         <p>Learn the native alphabet of the Philippines</p>
         <LinkButton text="start" handleClick={handleClickStart} />
@@ -35,6 +36,13 @@
     margin-bottom: 50px;
     font-size: 72px;
     color: #474747;
+  }
+
+  h2 {
+    text-align: center;
+    color: #979797;
+    font-size: 48px;
+    margin-bottom: 30px;
   }
 
   p {
