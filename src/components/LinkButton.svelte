@@ -1,9 +1,13 @@
 <script>
+  import { pulse } from '../common/animate';
+
   export let text = 'Start';
   export let handleClick;
 </script>
 
-<button type="button" class="btn" on:click={handleClick}>{text}</button>
+<button type="button" class="btn" on:click={handleClick} on:mouseenter={pulse}
+  >{text}</button
+>
 
 <style>
   button {
@@ -13,5 +17,6 @@
     border-radius: 20px;
     color: white;
     font-family: 'Arial Rounded MT Bold';
+    --animate-duration: 0.5s;
   }
 </style>

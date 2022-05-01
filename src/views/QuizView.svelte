@@ -1,5 +1,6 @@
 <script>
   import { questions } from '../stores/questions';
+  import { slideOutLeft } from '../common/animate';
   import ChoiceButton from '../components/ChoiceButton.svelte';
 
   // Retrieve 10 random letters from the questions store
@@ -33,24 +34,60 @@
       score += 1;
     }
     totalItems += 1;
-    nextQuestion();
+    slideOutLeft(document.getElementById('entireView'));
+    setTimeout(() => nextQuestion(), 500);
   }
 </script>
 
 <main>
-  <h1>{remainingQuestion[0]}</h1>
-  {#each choices as choice}
-    <div>
-      <ChoiceButton
-        text={choice}
-        isCorrect={choice === remainingQuestion[0] ? true : false}
-        {handleClickChoice}
-      />
-      <br />
+  <div
+    class="container d-flex flex-column min-vh-100 justify-content-center align-items-center animate__animated animate__slideInRight"
+    id="entireView"
+  >
+    <div class="row ">
+      <div class="col title-box">
+        <div class="question">
+          <h1 class="vertical-middle">{remainingQuestion[0]}</h1>
+        </div>
+        {#each choices as choice}
+          <div>
+            <ChoiceButton
+              text={choice}
+              isCorrect={choice === remainingQuestion[0] ? true : false}
+              {handleClickChoice}
+            />
+            <br />
+          </div>
+        {/each}
+      </div>
     </div>
-  {/each}
+  </div>
 </main>
 
 <style>
-  /* your styles go here */
+  .container {
+    height: 100vh;
+  }
+
+  .question {
+    background: #ffffff;
+    border: 29px solid #ffafcc;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+
+    width: 400px;
+    height: 400px;
+  }
+
+  .question h1 {
+    font-size: 56px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  #entireView {
+    --animate-duration: 0.5s;
+  }
 </style>
