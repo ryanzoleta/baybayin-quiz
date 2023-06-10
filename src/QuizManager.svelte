@@ -2,7 +2,6 @@
   import LandingView from './views/LandingView.svelte';
   import QuizView from './views/QuizView.svelte';
   import ResultsView from './views/ResultsView.svelte';
-  import { questions } from './stores/questions';
 
   const LANDING = 'LANDING';
   const QUIZ = 'QUIZ';
