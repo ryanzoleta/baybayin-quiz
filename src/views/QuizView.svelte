@@ -1,5 +1,5 @@
 <script>
-  import { questions } from '../stores/questions';
+  import questions from '../stores/questions';
   import { slideOutLeft, shake, bounce } from '../common/animate';
   import ChoiceButton from '../components/ChoiceButton.svelte';
 
